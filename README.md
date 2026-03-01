@@ -1,84 +1,106 @@
 # SQL_DWH_Project
 
-## 📊 Modern Data Warehouse using SQL Server
+## 📊 Modern Data Warehouse using SQL Server (Medallion Architecture)
 
-This project demonstrates the design and implementation of a **Modern Data Warehouse** using **Microsoft SQL Server**. It covers the complete data warehousing workflow including **ETL processes**, **data modeling**, and **analytics-ready structures**.
+This project demonstrates the implementation of a **Modern Data Warehouse** using **Microsoft SQL Server**, following the **Medallion Architecture** approach with **Bronze, Silver, and Gold layers**.
+
+The project covers end-to-end data warehousing concepts including **ETL pipelines**, **data transformation**, **dimensional modeling**, and **analytics-ready datasets**.
 
 ---
 
 ## 🚀 Project Overview
 
-The goal of this project is to build a scalable and structured **Data Warehouse (DWH)** system that transforms raw data into meaningful insights for analytical and business intelligence purposes.
+The objective of this project is to design a scalable and structured Data Warehouse that converts raw data into high-quality analytical data for reporting and business intelligence.
 
-The project includes:
+Key components:
 
-- Data Extraction from source systems
-- Data Transformation and Cleaning
-- Data Loading into warehouse layers
-- Dimensional Data Modeling
-- Analytical querying and reporting
+- Data ingestion from source systems
+- Multi-layer data transformation
+- Data quality improvement
+- Dimensional modeling
+- Analytical querying
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ Architecture — Medallion Design
 
-The warehouse follows a layered architecture:
+The warehouse follows a **three-layer Medallion Architecture**:
 
-1. **Source Layer**
-   - Raw operational data
-   - CSV / database sources
+### 🥉 Bronze Layer — Raw Data
+- Stores raw data exactly as received from source systems
+- Minimal transformation
+- Historical data preserved
+- Used for auditing and traceability
 
-2. **Staging Layer**
-   - Temporary storage
-   - Data validation & preprocessing
+**Purpose:**
+- Data ingestion
+- Source backup
+- Replay capability
 
-3. **Data Warehouse Layer**
-   - Fact and Dimension tables
-   - Star schema design
+---
 
-4. **Analytics Layer**
-   - Business queries
-   - Reporting & insights
+### 🥈 Silver Layer — Cleaned & Transformed Data
+- Data cleaning and validation
+- Standardized formats
+- Removed duplicates
+- Business rules applied
+
+**Transformations include:**
+- Handling NULL values
+- Data type corrections
+- Data normalization
+- Data quality checks
+
+---
+
+### 🥇 Gold Layer — Business & Analytics Layer
+- Analytics-ready datasets
+- Aggregated and modeled data
+- Star schema implementation
+
+**Contains:**
+- Fact tables
+- Dimension tables
+- KPI-ready datasets
+
+Used directly for:
+- Reporting
+- Dashboards
+- Business analysis
 
 ---
 
 ## ⚙️ Technologies Used
 
-- **SQL Server**
-- **T-SQL**
-- **ETL Processes**
-- **Data Modeling (Star Schema)**
-- **SQL Server Management Studio (SSMS)**
+- Microsoft SQL Server
+- T-SQL
+- SQL Server Management Studio (SSMS)
+- ETL Processes
+- Dimensional Modeling (Star Schema)
 
 ---
 
-## 🔄 ETL Process
-
-The ETL pipeline consists of:
+## 🔄 ETL Workflow
 
 ### Extract
-- Collect data from source systems
+- Load raw data into Bronze layer
 
 ### Transform
-- Data cleaning
-- Standardization
-- Handling null values
-- Data type conversion
+- Clean and standardize data in Silver layer
 
 ### Load
-- Insert processed data into dimensional tables
-- Maintain referential integrity
+- Build dimensional models in Gold layer
 
 ---
 
 ## 🧱 Data Modeling
 
-The project implements **Dimensional Modeling**:
+Gold layer follows **Dimensional Modeling**:
 
-- **Fact Tables** → Store measurable business metrics
-- **Dimension Tables** → Store descriptive attributes
+- **Fact Tables** → Business metrics
+- **Dimension Tables** → Descriptive attributes
 
-Example:
+Example Tables:
 - Fact_Sales
 - Dim_Customer
 - Dim_Product
@@ -86,19 +108,14 @@ Example:
 
 ---
 
-## 📈 Analytics & Queries
+## 📈 Analytics Capabilities
 
 The warehouse enables:
 
-- Aggregation queries
-- Business KPI analysis
-- Trend analysis
-- Performance reporting
-
-Example queries include:
-- Total sales by region
-- Monthly performance analysis
-- Customer segmentation
+- Sales trend analysis
+- Customer behavior insights
+- Performance KPIs
+- Aggregated reporting queries
 
 ---
 
@@ -107,53 +124,45 @@ Example queries include:
 ```
 SQL_DWH_Project/
 │
-├── datasets/          # Source data files
-├── staging/           # Staging scripts
-├── etl/               # ETL SQL scripts
-├── data_model/        # Schema & table creation
-├── analytics/         # Analytical queries
+├── bronze/        # Raw ingestion scripts
+├── silver/        # Data cleaning & transformations
+├── gold/          # Data models & analytics tables
+├── etl/           # ETL pipeline scripts
+├── datasets/      # Source data
 └── README.md
 ```
 
 ---
 
-## ▶️ How to Run
-
-1. Install **SQL Server** and **SSMS**
-2. Clone this repository:
-   ```bash
-   git clone https://github.com/your-username/SQL_DWH_Project.git
-   ```
-3. Create a new database in SQL Server
-4. Execute scripts in order:
-   - Schema creation
-   - Staging scripts
-   - ETL scripts
-   - Analytics queries
-
----
 
 ## 🎯 Learning Outcomes
 
-- Understanding Data Warehouse architecture
-- Designing Star Schema models
-- Building ETL pipelines using SQL
-- Writing analytical SQL queries
-- Preparing data for BI tools
+- Modern Data Warehouse architecture
+- Medallion data design pattern
+- SQL-based ETL development
+- Data modeling best practices
+- Analytical SQL querying
 
 ---
 
-## 📌 Future Improvements
+## 🔮 Future Improvements
 
-- Integration with Power BI dashboards
-- Automation using SQL Server Agent
-- Incremental data loading
-- Performance optimization
+- Power BI integration
+- Automated ETL scheduling
+- Incremental loading strategy
+- Data quality monitoring
 
 ---
 
 ## 👤 Author
 
+**Suhail Alam**
+
+---
+
+## 📄 License
+
+This project is created for educational and portfolio purposes.
 **Suhail Alam**
 
 ---
